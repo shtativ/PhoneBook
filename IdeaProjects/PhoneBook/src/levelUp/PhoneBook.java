@@ -43,10 +43,27 @@ public class PhoneBook {
 
             if (input == 1) {
                 //add contact
-                System.out.println(menu1);
-                BufferedReader addContact = new BufferedReader(new InputStreamReader(System.in));
-                String newContact = reader.readLine();
+                int countContacts = 0;
+                Contact contact_1 = new Contact();
 
+                System.out.println(menu1);
+                System.out.println("Введите имя нового контакта: ");
+                BufferedReader addNameContact = new BufferedReader(new InputStreamReader(System.in));
+                String nameContact = reader.readLine();
+                contact_1.name = nameContact;
+                System.out.println("Введите номер телефона нового контакта: ");
+                BufferedReader addPhoneContact = new BufferedReader(new InputStreamReader(System.in));
+                String phoneContact = reader.readLine();
+                contact_1.phone = phoneContact;
+                System.out.println("Введите e-mail нового контакта: ");
+                BufferedReader addEmailContact = new BufferedReader(new InputStreamReader(System.in));
+                String emailContact = reader.readLine();
+                contact_1.email = emailContact;
+                //реализоваться добавление нового контакта
+                contact_1.init(contact_1.name, contact_1.phone, contact_1.email);
+
+                countContacts++;
+                contact_1.print();
             } else {
                 if (input == 2) {
                     //delete contact
@@ -104,7 +121,7 @@ public class PhoneBook {
 * 2 - Считать выбор пользователя
 * 3 - Реализовать добавление, если выбран соответствующий пункт, (Введите имя, телефон, алала)
 *     Введите имя ...
-*     Contact c = new Contact90;
+*     Contact c = new Contact();
 *     c.init(...);
 *     book.add(c);
 *     вывод всех контактов на экран
