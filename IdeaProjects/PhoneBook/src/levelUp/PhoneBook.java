@@ -40,7 +40,7 @@ public class PhoneBook {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int input = Integer.parseInt(reader.readLine());
-
+        do {
             if (input == 1) {
                 //add contact
                 int countContacts = 0;
@@ -64,36 +64,39 @@ public class PhoneBook {
 
                 countContacts++;
                 contact_1.print();
-            } else {
-                if (input == 2) {
-                    //delete contact
-                    System.out.println(menu2);
 
-                } else {
-                    if (input == 3) {
-                        //show all contact
-                        System.out.println(menu3);
+            } else{
+                    if (input == 2) {
+                        //delete contact
+                        System.out.println(menu2);
+
                     } else {
-                        if (input == 4) {
-                            // find by name
-                            System.out.println(menu4);
+                        if (input == 3) {
+                            //show all contact
+                            System.out.println(menu3);
                         } else {
-                            if (input == 5) {
-                                //edit contact
-                                System.out.println(menu5);
+                            if (input == 4) {
+                                // find by name
+                                System.out.println(menu4);
                             } else {
-                                if (input == 6) {
-                                    //quit
-                                    System.out.println(menu6);
+                                if (input == 5) {
+                                    //edit contact
+                                    System.out.println(menu5);
                                 } else {
-                                    System.out.println("\nRetype!\n");
-                                    System.out.println(menu0 + "\n" + menu1 + "\n" + menu2 + "\n" + menu3 + "\n" + menu4 + "\n" + menu5 + "\n" + menu6 + "\n" + menu7 + "\n");
+                                    if (input == 6) {
+                                        //quit
+                                        System.out.println(menu6);
+                                    } else {
+                                        System.out.println("\nRetype!\n");
+                                        System.out.println(menu0 + "\n" + menu1 + "\n" + menu2 + "\n" + menu3 + "\n" + menu4 + "\n" + menu5 + "\n" + menu6 + "\n" + menu7 + "\n");
+                                    }
                                 }
                             }
                         }
                     }
+
                 }
-            }
+            } while(false);
 
 
 //
