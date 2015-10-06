@@ -7,12 +7,14 @@ import java.util.ArrayList;
 
 /**
  * Created by shtativ on 02.10.15.
- *PhoneBook
+ * PhoneBook
  */
 
 public class PhoneBook {
     public static void main(String[] args) throws IOException {
 
+        String keyPressed;
+        do {
         //меню
         String menu0 = "======   Menu   ======";
         String menu1 = "1 - Add contact";
@@ -35,15 +37,20 @@ public class PhoneBook {
 
 
         // display the Menu
-        System.out.println(menu0 + "\n" + menu1 + "\n" + menu2 + "\n" + menu3 + "\n" + menu4 + "\n" + menu5 + "\n" + menu6 + "\n" + menu7 + "\n");
+        System.out.println(menu0 + "\n" + menu1 + "\n" + menu2 + "\n" + menu3 + "\n" + menu4 + "\n" +
+                menu5 + "\n" + menu6 + "\n" + menu7 + "\n");
         System.out.println("Введите номер соответствующего пункта меню: ");
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int input = Integer.parseInt(reader.readLine());
-        do {
+
+        ArrayList<Contact> book = new ArrayList<Contact>();
+        int countContacts = 0;
+
+
             if (input == 1) {
                 //add contact
-                int countContacts = 0;
+
                 Contact contact_1 = new Contact();
 
                 System.out.println(menu1);
@@ -59,51 +66,65 @@ public class PhoneBook {
                 BufferedReader addEmailContact = new BufferedReader(new InputStreamReader(System.in));
                 String emailContact = reader.readLine();
                 contact_1.email = emailContact;
+
                 //реализоваться добавление нового контакта
                 contact_1.init(contact_1.name, contact_1.phone, contact_1.email);
 
+                //добавление контакта в список
+                book.add(contact_1);
+                int countOldContact = countContacts;
                 countContacts++;
-                contact_1.print();
+                if (countContacts > countOldContact) {
+                    book.add(contact_1);
+                }
+                // contact_1.print();
 
-            } else{
-                    if (input == 2) {
-                        //delete contact
-                        System.out.println(menu2);
+            } else {
+                if (input == 2) {
+                    //delete contact
+                    System.out.println(menu2);
 
+                } else {
+                    if (input == 3) {
+                        //show all contact
+                        System.out.println(menu3);
+
+                        for (int i = 0; i < book.size(); i++) {
+                            int j = book.size() - i - 1;
+                            System.out.println(book.get(j));
+
+                        }
                     } else {
-                        if (input == 3) {
-                            //show all contact
-                            System.out.println(menu3);
+                        if (input == 4) {
+                            // find by name
+                            System.out.println(menu4);
                         } else {
-                            if (input == 4) {
-                                // find by name
-                                System.out.println(menu4);
+                            if (input == 5) {
+                                //edit contact
+                                System.out.println(menu5);
                             } else {
-                                if (input == 5) {
-                                    //edit contact
-                                    System.out.println(menu5);
+                                if (input == 6) {
+                                    //quit
+                                    System.out.println(menu6);
                                 } else {
-                                    if (input == 6) {
-                                        //quit
-                                        System.out.println(menu6);
-                                    } else {
-                                        System.out.println("\nRetype!\n");
-                                        System.out.println(menu0 + "\n" + menu1 + "\n" + menu2 + "\n" + menu3 + "\n" + menu4 + "\n" + menu5 + "\n" + menu6 + "\n" + menu7 + "\n");
-                                    }
+                                    System.out.println("\nRetype!\n");
+                                    System.out.println(menu0 + "\n" + menu1 + "\n" + menu2 + "\n" + menu3 +
+                                            "\n" + menu4 + "\n" + menu5 + "\n" + menu6 + "\n" + menu7 + "\n");
                                 }
                             }
                         }
                     }
-
                 }
-            } while(false);
+
+            }
 
 
+        } while ( keyPressed != "\u0020" );
 //
 
 //        System.out.println(contacts[0].name);
 //        System.out.println(contacts[1].phone);
-       // firstContact.print();
+        // firstContact.print();
 
 //        ArrayList<Contact> book = new ArrayList<Contact>();
 //
@@ -118,7 +139,6 @@ public class PhoneBook {
 
     }
 }
-
 /*
 * 1 - Вывод МЕНЮ на экран
 * 2 - Считать выбор пользователя
