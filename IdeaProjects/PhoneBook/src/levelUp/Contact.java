@@ -5,7 +5,9 @@ package levelUp;
  */
 public class Contact {
     //состояние - поля класса
-    String name;
+    public static int count = 0;
+    public static final int CONST = 10; //неизменяемая переменная(константа)
+    private String name;
     String phone;
     String email;
 
@@ -20,6 +22,10 @@ public class Contact {
     //Ничего не возвращает
     // 1) по количеству параметров
     // 2) по типу параметров
+
+    public Contact(){
+        count++;
+    }
     public Contact(String name, String phone, String email) {
         this.name = name;
         this.phone = phone;
@@ -27,8 +33,8 @@ public class Contact {
     }
 
     //метод с аргументами
-    public void print() {
-        System.out.println(name + " " + phone + " " + email);
+    private void print() {
+        System.out.println(string());
     }
 
     //    public void init(String name, String phone, String email) {
@@ -39,6 +45,14 @@ public class Contact {
     public String string() {
         String s = name + " " + phone + " " + email;
         return s;
+    }
+        public String getName() {
+            return name;
+        }
+
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
 
