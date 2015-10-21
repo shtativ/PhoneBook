@@ -19,9 +19,7 @@ public class MyArrayList {
         temp[size] = c;
         // object = новый массив
         object = temp;
-        ++size; //
-
-
+        size++; //
     }
 
     //Метод size()  - получение размера
@@ -44,12 +42,13 @@ public class MyArrayList {
         for (int i = 0; i < index; i++) {
             temp[i] = object[i];
         }
-        for (int i = 0; i < index + 1; i++) {
+        for (int i = index + 1; i < size; i++) {
             temp[i - 1] = object[i];
         }
         object = temp;
         size--;
-        // object = temp
+
+      //  public void clear
     }
 }
 //===================================================

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by shtativ on 02.10.15.
@@ -11,7 +12,9 @@ import java.util.ArrayList;
  */
 
 public class PhoneBook {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
+        MyArrayList book = new MyArrayList();
+        Scanner scanner = new Scanner(System.in);
 
         while (true) {
             //меню
@@ -25,63 +28,47 @@ public class PhoneBook {
             String menu7 = "======================";
 
             // display the Menu
-            System.out.println(menu0 + "\n" + menu1 + "\n" + menu2 + "\n" + menu3 + "\n" + menu4 + "\n" +
+            System.out.println(menu0 + "\n" + menu1 + "\n" +
+                    menu2 + "\n" + menu3 + "\n" + menu4 + "\n" +
                     menu5 + "\n" + menu6 + "\n" + menu7 + "\n");
             System.out.println("Введите номер соответствующего пункта меню: ");
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            int input = Integer.parseInt(reader.readLine());
-
-            MyArrayList book = new MyArrayList();
+            int input = scanner.nextInt();
 
             if (input == 1) {
 
-
-
-                System.out.println(menu1);
                 System.out.println("Введите имя нового контакта: ");
-                BufferedReader addNameContact = new BufferedReader(new InputStreamReader(System.in));
-                String name = reader.readLine();
+                String name = scanner.next();
                 System.out.println("Введите номер телефона нового контакта: ");
-                BufferedReader addPhoneContact = new BufferedReader(new InputStreamReader(System.in));
-                String phone = reader.readLine();
+                String phone = scanner.next();
                 System.out.println("Введите e-mail нового контакта: ");
-                BufferedReader addEmailContact = new BufferedReader(new InputStreamReader(System.in));
-                String email = reader.readLine();
+                String email = scanner.next();
 
-              //реализоваться добавление нового контакта
-                Contact contact_1 = new Contact(name, phone, email);
-                book.add(contact_1);
+                //добавление нового контакта
+                Contact c = new Contact(name, phone, email);
+                book.add(c);
 
-            } else {
-                if (input == 2) {
-                } else {
-                    if (input == 3) {
-                        //         book.print();
-
-                        //System.out.println(book);
-                        for (int i = 0; i < book.size(); i++) {
-                            System.out.println(book.get[i].print());
-                        }
-                    } else {
-                        if (input == 4) {
-                        } else {
-                            if (input == 5) {
-                            } else {
-                                if (input == 6) {
-                                    System.exit(0);
-                                } else {
-                                    System.out.println("\nRetype!\n");
-                                    System.out.println(menu0 + "\n" + menu1 + "\n" + menu2 + "\n" + menu3 +
-                                            "\n" + menu4 + "\n" + menu5 + "\n" + menu6 + "\n" + menu7 + "\n");
-                                }
-                            }
-                        }
-                    }
+            } else if (input == 2) {
+                //Deleting contact
+                //по имени определяете индекс контакта в book
+            } else if (input == 3) {
+                //Showing all
+                for (int i = 0; i < book.size(); i++) {
+                    book.get(i).print();
                 }
+            } else if (input == 4) {
+                //Finding by name
+            } else if (input == 5) {
+                //Editing by name
+            } else if (input == 6) {
+                //Quit
+                System.exit(0);
+            } else {
+               System.out.println("\nRetype!\n");
             }
         }
     }
+}
 
 
 //           } while ( keyPressed != "\u0020" );
@@ -118,7 +105,4 @@ public class PhoneBook {
 * 4 - Если другая операция, то сообщение "Coming soon.."
 * 5 - Вывод всех контактов
 * 6 - Найти как выйти из меню
-* */
-/*
- */
-}
+*/
